@@ -2,28 +2,28 @@ package bg.softuni.pathfinderDemo.model.entity;
 
 import bg.softuni.pathfinderDemo.model.entity.enums.Level;
 import bg.softuni.pathfinderDemo.model.entity.Role;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Set;
 
 @Entity
 @Table(name = "users")
 public class User extends BaseEntity{
+    @Column
+    private Integer age;
     @Column(nullable = false, unique = true)
     private String username;
     @Column(nullable = false)
     private String password;
     @Column(nullable = false)
     private String fullName;
-    @Column(nullable = false, unique = true)
+    @Column()
     private String email;
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private Level level;
     @Column(nullable = false)
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
     public String getUsername() {
@@ -75,5 +75,13 @@ public class User extends BaseEntity{
     }
 
     public User() {
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 }

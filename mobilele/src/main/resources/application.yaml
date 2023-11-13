@@ -7,7 +7,29 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
+    defer-datasource-initialization: true
+
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+
   sql:
     init:
       mode: never
+
+mobilele:
+  remember.me.key: ${REMEMBER_ME_KEY:topsecret}
+
+
+
+logging:
+  level:
+      org.hibernate.SQL: DEBUG
+      org.springframework: DEBUG
+      org.hibernate.orm.jdbc.bind: trace
+#      org.hibernate.orm.jdbc.bind: TRACE
+#      org.springframework.security: TRACE
+
+

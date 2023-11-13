@@ -1,6 +1,7 @@
 package org.softuni.mobilele.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import org.softuni.mobilele.model.entity.enums.Engine;
 import org.softuni.mobilele.model.entity.enums.Transmission;
 
@@ -10,24 +11,25 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "offers")
 public class Offer extends BaseEntity{
+
     @Column(columnDefinition = "TEXT")
     private String description;
-    @Column(nullable = false)
+    @NotNull
     @Enumerated(value = EnumType.STRING)
     private Engine engine;
     private String imageUrl;
-    @Column(nullable = false)
+    @Column
     private Integer mileage;
-    @Column(nullable = false)
+    @Column
     private BigDecimal price;
-    @Column(nullable = false)
+    @Column
     @Enumerated(value = EnumType.STRING)
     private Transmission transmission;
-    @Column(nullable = false)
+    @Column
     private Integer year;
-    @Column(nullable = false)
+    @Column
     private LocalDateTime created;
-    @Column(nullable = false)
+    @Column
     private LocalDateTime modified;
     @ManyToOne
     private Model model;
@@ -124,4 +126,5 @@ public class Offer extends BaseEntity{
     public void setSeller(User seller) {
         this.seller = seller;
     }
+
 }

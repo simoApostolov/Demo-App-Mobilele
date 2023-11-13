@@ -1,27 +1,26 @@
 package org.softuni.mobilele.model.entity;
 
 import jakarta.persistence.*;
-import org.softuni.mobilele.model.entity.enums.CarCategory;
+import org.softuni.mobilele.model.entity.enums.ModelCategory;
 
 import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
 @Table(name = "models")
-public class Model extends BaseEntity{
-    @Column(nullable = false, unique = true)
+public class Model extends BaseEntity {
+    @Column
     private String name;
-    @Column(nullable = false,unique = true)
     @Enumerated(value = EnumType.STRING)
-    private CarCategory category;
+    private ModelCategory category;
     private String imageUrl;
-    @Column(nullable = false, unique = true)
+    @Column
     private Integer startYear;
-    @Column(nullable = false,unique = true)
+    @Column
     private Integer endYear;
-    @Column(nullable = false,unique = true)
+    @Column
     private LocalDateTime created;
-    @Column(nullable = false,unique = true)
+    @Column
     private LocalDateTime modified;
     @ManyToOne
     private Brand brand;
@@ -39,11 +38,11 @@ public class Model extends BaseEntity{
         this.name = name;
     }
 
-    public CarCategory getCategory() {
+    public ModelCategory getCategory() {
         return category;
     }
 
-    public void setCategory(CarCategory category) {
+    public void setCategory(ModelCategory category) {
         this.category = category;
     }
 

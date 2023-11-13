@@ -10,12 +10,12 @@ import java.util.Set;
 
 @Entity
 @Table(name = "brands")
-public class Brand extends BaseEntity{
+public class Brand extends BaseEntity {
     @Column(nullable = false, unique = true)
     private String name;
-    @Column(nullable = false)
+    @Column
     private LocalDateTime created;
-    @Column(nullable = false)
+    @Column
     private LocalDateTime modified;
     @OneToMany(mappedBy = "brand")
     private Set<Model> models;
